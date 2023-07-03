@@ -1,12 +1,21 @@
 ﻿<Window x:Class="PlayerWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlayerWPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:local="clr-namespace:PlayerWPF" 
+        Title="Media Player" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MediaPlayerViewModel /> <!-- Certifique-se de que o nome da classe esteja correto -->
+    </Window.DataContext>
+
     <Grid>
+        <!-- Defina os elementos visuais do player de mídia aqui -->
+        <StackPanel>
+            <Button Content="Play" Command="{Binding PlayCommand}" />
+            <Button Content="Pause" Command="{Binding PauseCommand}" />
+            <Button Content="Stop" Command="{Binding StopCommand}" />
+            <Button Content="Selecionar Mídia" Click="SelectMediaButton_Click" />
+            <!-- Outros elementos visuais -->
+        </StackPanel>
 
     </Grid>
 </Window>

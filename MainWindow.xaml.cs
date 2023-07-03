@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace PlayerWPF
 {
@@ -20,9 +21,25 @@ namespace PlayerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MediaPlayerModel MediaPlayerModel { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+
+            MediaPlayerModel = new MediaPlayerModel();
+            DataContext = MediaPlayerModel;
+        }
+
+        private void SelectMediaButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos de Mídia|*.mp3;*.mp4;*.avi";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                MediaPlayerModel.MediaPath = selectedFilePath;
+            }
         }
     }
 }
