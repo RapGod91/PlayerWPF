@@ -22,6 +22,8 @@ namespace PlayerWPF
     public partial class MainWindow : Window
     {
         public MediaPlayerModel MediaPlayerModel { get; set; }
+        private TimeSpan currentPosition;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,5 +43,38 @@ namespace PlayerWPF
                 MediaPlayerModel.MediaPath = selectedFilePath;
             }
         }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MediaPlayerModel.IsPlaying)
+            {
+                // Retomar a reprodução a partir da posição congelada
+                mediaElement.Position = currentPosition;
+                mediaElement.Play();
+            }
+            else
+            {
+                // Iniciar a reprodução do início
+                mediaElement.Play();
+            }
+
+            MediaPlayerModel.IsPlaying = true;
+        }
+
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            mediaElement.Pause();
+            currentPosition = mediaElement.Position;
+            MediaPlayerModel.IsPlaying = false;
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            mediaElement.Stop();
+            MediaPlayerModel.MediaPath = null;
+            MediaPlayerModel.IsPlaying = false;
+        }
     }
 }
+//Quando pausa ou Stopa o vídeo está fechando o programa.
+//Tem que tirar o IsPlaying = false;
