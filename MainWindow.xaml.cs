@@ -21,20 +21,21 @@ namespace PlayerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MediaPlayerModel MediaPlayerModel { get; set; }
-        private TimeSpan currentPosition;
+        public MediaPlayerModel MediaPlayerModel { get; set; }  // Propriedade para a instância de MediaPlayerModel
+        private TimeSpan currentPosition;  // Armazena a posição atual do vídeo
 
         public MainWindow()
         {
             InitializeComponent();
 
+            // Exibe uma MessageBox com instruções para o usuário
             MessageBox.Show("Bem-vindo ao Media Player!\n\nPara usar o player, siga as seguintes instruções:\n\n1. Clique no botão 'Selecionar Mídia' para escolher um arquivo de mídia.\n2. Clique no botão 'Play' para reproduzir a mídia selecionada.\n3. Clique no botão 'Pause' para pausar a reprodução da mídia.\n4. Clique no botão 'Parar' para interromper a reprodução da mídia.\n\nAproveite a experiência!",
-                        "Instruções",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                            "Instruções",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
 
-            MediaPlayerModel = new MediaPlayerModel();
-            DataContext = MediaPlayerModel;
+            MediaPlayerModel = new MediaPlayerModel();  // Instanciação de MediaPlayerModel
+            DataContext = MediaPlayerModel;  // Define o DataContext da janela como MediaPlayerModel
         }
 
         private void SelectMediaButton_Click(object sender, RoutedEventArgs e)
@@ -90,7 +91,6 @@ namespace PlayerWPF
             }
         }
 
-
         private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -108,7 +108,6 @@ namespace PlayerWPF
                 MessageBox.Show($"Erro ao pausar o vídeo: {ex.Message}");
             }
         }
-
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {

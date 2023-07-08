@@ -3,8 +3,8 @@ using System.Windows.Input;
 
 public class RelayCommand : ICommand
 {
-    private Action execute;
-    private Func<bool> canExecute;
+    private Action execute;  // Ação a ser executada quando o comando for acionado
+    private Func<bool> canExecute;  // Método que verifica se o comando pode ser executado
 
     public RelayCommand(Action execute)
     {

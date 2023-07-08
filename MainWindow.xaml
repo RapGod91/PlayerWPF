@@ -3,32 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:PlayerWPF"
         Title="Media Player" Height="600" Width="800">
+    <!-- Define a classe MainWindow como a classe para esta janela -->
+
     <Window.DataContext>
         <local:MediaPlayerViewModel />
+        <!-- Define o DataContext da janela como uma instância de MediaPlayerViewModel -->
     </Window.DataContext>
 
     <Grid>
+        <!-- Cria um controle Grid para organizar os elementos na janela -->
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <!-- Define quatro linhas no Grid com altura automática -->
 
         <MediaElement x:Name="mediaElement" Source="{Binding MediaPath}" Width="750" Height="500" LoadedBehavior="Manual" Grid.Row="0" />
+        <!-- Cria um controle MediaElement para reproduzir a mídia, vinculado à propriedade MediaPath do DataContext, com largura e altura definidas, e LoadedBehavior definido como Manual. Ele é colocado na primeira linha (Grid.Row="0") -->
 
         <Button Content="Selecionar Mídia" Click="SelectMediaButton_Click" Grid.Row="2" />
+        <!-- Cria um botão para selecionar a mídia, com um manipulador de evento Click definido como SelectMediaButton_Click. Ele é colocado na terceira linha (Grid.Row="2") -->
 
         <Grid Grid.Row="1">
+            <!-- Cria um controle Grid dentro da segunda linha do Grid principal (Grid.Row="1") -->
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <!-- Define três colunas no Grid secundário com largura igual, usando "*" -->
 
             <Button Content="Play" Click="PlayButton_Click" Grid.Column="0" />
+            <!-- Cria um botão para reproduzir a mídia, com um manipulador de evento Click definido como PlayButton_Click. Ele é colocado na primeira coluna (Grid.Column="0") -->
+
             <Button Content="Pause" Click="PauseButton_Click" Grid.Column="1" />
+            <!-- Cria um botão para pausar a reprodução da mídia, com um manipulador de evento Click definido como PauseButton_Click. Ele é colocado na segunda coluna (Grid.Column="1") -->
+
             <Button Content="Parar" Click="StopButton_Click" Grid.Column="2" />
+            <!-- Cria um botão para parar a reprodução da mídia, com um manipulador de evento Click definido como StopButton_Click. Ele é colocado na terceira coluna (Grid.Column="2") -->
         </Grid>
     </Grid>
 </Window>

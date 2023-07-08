@@ -5,10 +5,10 @@ namespace PlayerWPF;
 
 public class MediaPlayerViewModel : INotifyPropertyChanged
 {
-    private MediaPlayerModel model;
-    private RelayCommand playCommand;
-    private RelayCommand pauseCommand;
-    private RelayCommand stopCommand;
+    private MediaPlayerModel model;  // Instância do modelo MediaPlayerModel
+    private RelayCommand playCommand;  // Comando para reproduzir a mídia
+    private RelayCommand pauseCommand;  // Comando para pausar a reprodução da mídia
+    private RelayCommand stopCommand;  // Comando para parar a reprodução da mídia
     // outros comandos
 
     public MediaPlayerModel Model

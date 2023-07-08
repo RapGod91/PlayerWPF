@@ -6,10 +6,10 @@ namespace PlayerWPF
 {
     public class MediaPlayerModel : INotifyPropertyChanged
     {
-        private string mediaPath;
-        private bool isPlaying;
-        private TimeSpan currentPosition;
-        private MediaElement mediaElement;
+        private string mediaPath;  // Caminho da mídia
+        private bool isPlaying;  // Indica se a mídia está em reprodução
+        private TimeSpan currentPosition;  // Posição atual da mídia
+        private MediaElement mediaElement;  // Elemento MediaElement para reprodução da mídia
 
         public string MediaPath
         {
